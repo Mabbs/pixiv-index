@@ -29,7 +29,7 @@ jobs:
         echo "[" > index.json
         ls ./data|while read data
         do
-        print "\"$data\"," >>index.json
+        printf "\"$data\"," >>index.json
         done
         sed -i 's/.$//' index.json
         echo "]" >>index.json
