@@ -31,7 +31,7 @@ jobs:
         do
         echo "\"$data\"," >>index.json
         done
-        echo "]"
+        echo "]" >>index.json
         
     - name: Commit #上传新的refresh_token到仓库
       run: |
