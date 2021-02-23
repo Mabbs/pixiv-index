@@ -1,0 +1,45 @@
+name: Get Data
+
+on: 
+  schedule:
+    - cron: '0 0 * * *'
+  watch:
+    types: [started]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id  # 自己点的 start
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+    - name: Read config from secrets  #读取机密
+      env: 
+        API_KEYS: ${{ secrets.API_KEYS }} # secrets_key 提供
+      run: | 
+        echo $API_KEYS > key.json
+    - name: Run Script #Api调用
+      run: | 
+        php loliconapi.php
+    - name: Delete secrets config #删除机密
+      run: | 
+        rm -f key.json
+    - name: Make index
+      run: | 
+        echo "[" > index.json
+        ls ./data|while read data
+        do
+        echo "\"$data\"," >>index.json
+        done
+        echo "]"
+        
+    - name: Commit #上传新的refresh_token到仓库
+      run: |
+        git config --global user.email AutoupdateRobot@email.com
+        git config --global user.name AutoupdateRobot
+        git add .
+        git commit -m "update json" -a
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
