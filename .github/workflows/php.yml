@@ -29,8 +29,9 @@ jobs:
         echo "[" > index.json
         ls ./data|while read data
         do
-        echo "\"$data\"," >>index.json
+        print "\"$data\"," >>index.json
         done
+        sed -i 's/.$//' index.json
         echo "]" >>index.json
         
     - name: Commit #上传新的refresh_token到仓库
