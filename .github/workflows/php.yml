@@ -1,8 +1,6 @@
 name: Get Data
 
 on: 
-  schedule:
-    - cron: '0 0 * * *'
   watch:
     types: [started]
 
@@ -34,7 +32,7 @@ jobs:
         sed -i 's/.$//' index.json
         echo "]" >>index.json
         
-    - name: Commit #上传新的refresh_token到仓库
+    - name: Commit #上传新的json到仓库
       run: |
         git config --global user.email AutoupdateRobot@email.com
         git config --global user.name AutoupdateRobot
