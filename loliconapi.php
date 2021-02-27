@@ -11,6 +11,6 @@ fwrite($picfile, json_encode($pic,JSON_UNESCAPED_UNICODE));
 fclose($picfile);
 }
 }
-sleep(1);
+//sleep(1);
 }
 }
