@@ -9,3 +9,9 @@ PHP示例:
 $raw=json_decode(file_get_contents("https://mabbs.github.io/pixiv-index/index.json"),true);
 echo file_get_contents('https://mabbs.github.io/pixiv-index/data/'.$raw[rand(0,count($raw)-1)]);
 ```
+同样，你也可以使用由[jsDelivr](https://www.jsdelivr.com/)提供的CDN，例如：
+```
+<?php
+$raw=json_decode(file_get_contents("https://cdn.jsdelivr.net/gh/Mabbs/pixiv-index/index.json"),true);
+echo file_get_contents('https://cdn.jsdelivr.net/gh/Mabbs/pixiv-index/data/'.$raw[rand(0,count($raw)-1)]);
+```
