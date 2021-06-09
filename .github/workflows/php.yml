@@ -11,17 +11,9 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@master
-    - name: Read config from secrets  #读取机密
-      env: 
-        API_KEYS: ${{ secrets.API_KEYS }} # secrets_key 提供
-      run: | 
-        echo $API_KEYS > key.json
     - name: Run Script #Api调用
       run: | 
         php loliconapi.php
-    - name: Delete secrets config #删除机密
-      run: | 
-        rm -f key.json
     - name: Make index
       run: | 
         printf "[" > index.json
