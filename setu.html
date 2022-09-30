@@ -12,7 +12,7 @@ Made By <a href="https://mayx.eu.org">Mayx</a>
 function getimg(){
     $("img")[0].src = "/images/loading.svg";
     $.get("/pixiv-index/index.json",function(data){
-        $.get("/pixiv-index/data/" + data[Math.floor(Math.random()*100000)%(data.length)] ,function(data){
+        $.get("/pixiv-index/data/" + data[Math.floor(Math.random()*data.length)] ,function(data){
             console.log(data);
             $("img")[0].src = "https://pixiv.mayx.eu.org" + data["url"];
         });
