@@ -15,3 +15,6 @@ echo file_get_contents('https://mabbs.github.io/pixiv-index/data/'.$raw[rand(0,c
 $raw=json_decode(file_get_contents("https://cdn.jsdelivr.net/gh/Mabbs/pixiv-index/index.json"),true);
 echo file_get_contents('https://cdn.jsdelivr.net/gh/Mabbs/pixiv-index/data/'.$raw[rand(0,count($raw)-1)]);
 ```
+
+## 前端演示
+[Setu Viewer](setu.html)
