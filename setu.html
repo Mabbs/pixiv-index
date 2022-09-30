@@ -1,0 +1,17 @@
+<title>Setu Viewer</title>
+<script src="/js/jquery.min.js"></script>
+<center>
+<h1>Setu Viewer</h1>
+<hr />
+<img src="/images/loading.svg" width="500" />
+<hr />
+Made By Mayx
+</center>
+<script>
+    $.get("/pixiv-index/index.json",function(data){
+        $.get("/pixiv-index/data/" + data[Math.floor(Math.random()*100000)%(data.length)] ,function(data){
+            console.log(data);
+            $("img")[0].src = "https://pixiv.mayx.eu.org" + data["url"];
+        });
+    });
+</script>
