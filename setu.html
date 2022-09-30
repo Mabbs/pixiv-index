@@ -1,16 +1,16 @@
 <title>Setu Viewer</title>
-<script src="https://mabbs.github.io/js/jquery.min.js"></script>
+<script src="/js/jquery.min.js"></script>
 <center>
 <h1>Setu Viewer</h1>
 <hr />
-<img src="https://mabbs.github.io/images/loading.svg" width="500" onerror="getimg()"/>
+<img src="/images/loading.svg" width="500" onerror="getimg()"/>
 <hr />
 Made By <a href="https://mayx.eu.org">Mayx</a>
 </center>
 <script>
 function getimg(){
-    $.get("https://mabbs.github.io/pixiv-index/index.json",function(data){
-        $.get("https://mabbs.github.io/pixiv-index/data/" + data[Math.floor(Math.random()*100000)%(data.length)] ,function(data){
+    $.get("/pixiv-index/index.json",function(data){
+        $.get("/pixiv-index/data/" + data[Math.floor(Math.random()*100000)%(data.length)] ,function(data){
             console.log(data);
             $("img")[0].src = "https://pixiv.mayx.eu.org" + data["url"];
         });
