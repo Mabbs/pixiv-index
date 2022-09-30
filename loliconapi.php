@@ -1,5 +1,5 @@
 <?php
-for($i=0;$i<=100;$i++){
+for($i=0;$i<=500;$i++){
 $raw=json_decode(file_get_contents('https://api.lolicon.app/setu/v2?r18=1&num=20&size=regular'),true)['data'];
 foreach($raw as $pic){
 $pic['url']=$pic['urls']['regular'];
