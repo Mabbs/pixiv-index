@@ -9,6 +9,7 @@ Made By <a href="https://mayx.eu.org">Mayx</a>
 </center>
 <script>
 function getimg(){
+    $("img")[0].src = "/images/loading.svg";
     $.get("/pixiv-index/index.json",function(data){
         $.get("/pixiv-index/data/" + data[Math.floor(Math.random()*100000)%(data.length)] ,function(data){
             console.log(data);
