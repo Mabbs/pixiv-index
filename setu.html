@@ -18,10 +18,6 @@ Made By <a href="https://mayx.eu.org">Mayx</a>
 <script>
 var indexdata;
 function getimg(){
-    $("#pid")[0].innerHTML = "Loading...";
-    $("#title")[0].innerHTML = "Loading...";
-    $("#author")[0].innerHTML = "Loading...";
-    $("#tags")[0].innerHTML = "Loading...";
     $("img")[0].src = "/images/loading.svg";
     setTimeout(function(){
         $.get("/pixiv-index/data/" + indexdata[Math.floor(Math.random()*indexdata.length)] ,function(data){
