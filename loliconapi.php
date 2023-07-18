@@ -5,7 +5,7 @@ foreach($raw as $pic){
 $pic['url']=$pic['urls']['regular'];
 $pic['url']=str_replace("https://i.pixiv.re","",$pic['url']);
 //if(!is_file('./data/'.$pic['pid'].'.json')){
-$picfile = fopen('./data/'.$pic['pid'].'.json', "w");
+$picfile = fopen('./data/'.$pic['pid'].'_'.$pic['p'].'.json', "w");
 fwrite($picfile, json_encode($pic,JSON_UNESCAPED_UNICODE));
 fclose($picfile);
 //}
