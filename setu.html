@@ -22,11 +22,11 @@ function getimg(){
     setTimeout(function(){
         $.get("/pixiv-index/data/" + indexdata[Math.floor(Math.random()*indexdata.length)] ,function(data){
             console.log(data);
-            $("#pid")[0].innerHTML = data["pid"];
+            $("#pid")[0].innerHTML = "<a href=\"https://www.pixiv.net/artworks/" + data["pid"] + "\">" + data["pid"] + "</a>";
             $("#title")[0].innerHTML = data["title"];
             $("#author")[0].innerHTML = data["author"];
             $("#tags")[0].innerHTML = data["tags"];
-            $("img")[0].src = "https://pixiv.linkpc.net" + data["url"];
+            $("img")[0].src = "https://pixiv.mayx.eu.org" + data["url"];
         });
     }, 500);
 }
