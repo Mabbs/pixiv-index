@@ -9,6 +9,7 @@
 <p>PID: <span id="pid">Loading...</span></p>
 <p>标题: <span id="title">Loading...</span></p>
 <p>作者: <span id="author">Loading...</span></p>
+<p>上传时间: <span id="uploadDate">Loading...</span></p>
 <p>Tags: <span id="tags">Loading...</span></p>
 </td></tr></table>
 <p><button onclick="alert('Loading');">再来一张</button></p>
@@ -18,14 +19,15 @@ Made By <a href="https://mayx.eu.org">Mayx</a>
 <script>
 var indexdata;
 function getimg(){
-    $("img")[0].src = "/images/loading.svg";
+    $("img").attr("src", "/images/loading.svg");
     setTimeout(function(){
         $.get("/pixiv-index/data/" + indexdata[Math.floor(Math.random()*indexdata.length)] ,function(data){
             $("#pid").html("<a href=\"https://www.pixiv.net/artworks/" + data["pid"] + "\">" + data["pid"] + "</a>");
             $("#title").html(data["title"]);
             $("#author").html("<a href=\"https://www.pixiv.net/users/" + data["uid"] + "\">" + data["author"] + "</a>");
-            $("#tags").html(data["tags"]);
+            $("#tags").html(data["tags"].join(", "));
             $("img").attr("src", "https://pixiv.mayx.eu.org" + data["url"]);
+            $("#uploadDate").html(new Date(data["uploadDate"]).toLocaleString());
         });
     }, 500);
 }
