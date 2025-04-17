@@ -1,5 +1,5 @@
 <title>Setu Viewer</title>
-<script src="/js/jquery.min.js"></script>
+<script src="/assets/js/jquery.min.js"></script>
 <center>
 <h1>Setu Viewer</h1>
 <hr />
@@ -21,10 +21,9 @@ function getimg(){
     $("img")[0].src = "/images/loading.svg";
     setTimeout(function(){
         $.get("/pixiv-index/data/" + indexdata[Math.floor(Math.random()*indexdata.length)] ,function(data){
-            console.log(data);
             $("#pid")[0].innerHTML = "<a href=\"https://www.pixiv.net/artworks/" + data["pid"] + "\">" + data["pid"] + "</a>";
             $("#title")[0].innerHTML = data["title"];
-            $("#author")[0].innerHTML = data["author"];
+            $("#author")[0].innerHTML = "<a href=\"https://www.pixiv.net/artworks/" + data["uid"] + "\">" + data["author"] + "</a>";
             $("#tags")[0].innerHTML = data["tags"];
             $("img")[0].src = "https://pixiv.mayx.eu.org" + data["url"];
         });
