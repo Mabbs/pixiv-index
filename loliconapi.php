@@ -1,14 +1,12 @@
 <?php
-for($i=0;$i<=50;$i++){
-$raw=json_decode(file_get_contents('https://api.lolicon.app/setu/v2?r18=1&num=20&size=regular'),true)['data'];
+for($i=0;$i<=10000;$i++){
+$raw=json_decode(file_get_contents('https://api.lolicon.app/setu/v2?r18=0&num=20&size=regular'),true)['data'];
 foreach($raw as $pic){
-$pic['url']=$pic['urls']['regular'];
-$pic['url']=str_replace("https://i.pixiv.re","",$pic['url']);
-//if(!is_file('./data/'.$pic['pid'].'.json')){
-$picfile = fopen('./data/'.$pic['pid'].'_'.$pic['p'].'.json', "w");
-fwrite($picfile, json_encode($pic,JSON_UNESCAPED_UNICODE));
-fclose($picfile);
-//}
+file_put_contents(
+        './data/'.$pic['pid'].'_'.$pic['p'].'.json',
+        json_encode($raw, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)
+    );
+
 }
 sleep(5);
 }
